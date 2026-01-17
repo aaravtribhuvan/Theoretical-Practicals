@@ -20,8 +20,12 @@ def main():
         else:
             print("Please give a valid response.")
     
+    print("Matrix:")
     print(M)
-    print(get_evals(M))
+    rounded_evals = get_evals(M)
+    print("\nEnergies:")
+    for i in rounded_evals:
+        print("α + ", i ," β")
 
 def length(n):
     while True:
@@ -111,8 +115,9 @@ def napthalene():
 
 def get_evals(M):
     evals, evecs = np.linalg.eig(M)
-    evals_rounded = ['%.3f' % elem for elem in evals]
-    return np.sort(evals_rounded)
+    evals = np.sort(evals)
+    evals_rounded = ['%.6f' % eval for eval in evals]
+    return evals_rounded
 
 if __name__ == "__main__":
     main()
