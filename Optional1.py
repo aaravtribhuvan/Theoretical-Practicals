@@ -9,10 +9,10 @@ def main():
             break
         elif user.upper() == "N":
             type = nonlinear("Is the molecule a: 1. Cyclic Polyene, 2. Platonic Solid or 3. Napthalene? ")
-            if type == 1:
+            if type == "1" :
                 n = length("How many carbons are in the cyclic polyene? ")
                 M = cyclicmatrix(n)
-            elif type == 2:
+            elif type == "2" :
                 M = platonic("Is it a: 1. Tetrahedron, 2. Cube or 3. Dodecahedron? ")
             else:
                 M = napthalene()
@@ -114,6 +114,7 @@ def napthalene():
         (0,1),(1,2),(2,3),(3,4),(4,5),(5,0),
         (5,6),(6,7),(7,8),(8,9),(9,0)
     ]
+    
     M = np.zeros((10, 10))
     for i, j in edges:
         M[i, j] = M[j, i] = 1
