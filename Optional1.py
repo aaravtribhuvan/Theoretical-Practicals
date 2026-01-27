@@ -48,9 +48,9 @@ def length(n):
             
 def nonlinear(type):
     while True:
-        n = int(input(type))
+        n = (input(type))
         match n:
-            case 1 | 2 | 3:
+            case "1" | "2" | "3":
                 return n
             case _:
                 print("Please enter a valid response 1, 2 or 3.")
@@ -112,7 +112,7 @@ def dodecahedron():
 def napthalene():
     edges = [
         (0,1),(1,2),(2,3),(3,4),(4,5),(5,0),
-        (2,6),(6,7),(7,8),(8,9),(9,3)
+        (5,6),(6,7),(7,8),(8,9),(9,0)
     ]
     M = np.zeros((10, 10))
     for i, j in edges:
