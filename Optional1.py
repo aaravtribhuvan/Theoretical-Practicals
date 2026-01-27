@@ -26,6 +26,12 @@ def main():
     print("\nEnergies:")
     for i in rounded_evals:
         print("α + ", i ," β")
+    
+    deg = degeneracies(rounded_evals)
+    print("\n Degeneracies:")
+    for i in deg:
+        print(i , " : " , deg[i])
+
 
 def length(n):
     while True:
@@ -118,6 +124,16 @@ def get_evals(M):
     evals = np.sort(evals)
     evals_rounded = ['%.6f' % eval for eval in evals]
     return evals_rounded
+
+def degeneracies(evals):
+    deg = {}
+    for i in evals:
+        if i in deg:
+            deg[i] += 1
+        else:
+            deg[i] = 1
+    return deg
+
 
 if __name__ == "__main__":
     main()
