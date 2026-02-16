@@ -1,6 +1,7 @@
 import numpy as np
 
 def main():
+    # Gets input from the user of the type of molecule/length and decides which matrix to use
     while True:
         user = input("Is the molecule linear? Y/N ")
         if user.upper() == "Y":
@@ -19,7 +20,8 @@ def main():
             break
         else:
             print("Please give a valid response.")
-    
+    #The correect matrix for the molecule specified by the user is then retrieved
+
     print("Matrix:")
     print(M)
     rounded_evals = get_evals(M)
@@ -31,8 +33,9 @@ def main():
     print("\n Degeneracies:")
     for i in deg:
         print(i , " : " , deg[i])
+    #The information about the matrix and the calculated energies/degeneracies are then printed for the user
 
-
+# For a linear molecule it ensures it is an even number
 def length(n):
     while True:
         try:
@@ -45,7 +48,8 @@ def length(n):
             return length
         else:
             print("Please enter an even integer.")
-            
+
+# Used to input what the non-linear molecule is        
 def nonlinear(type):
     while True:
         n = (input(type))
@@ -55,7 +59,7 @@ def nonlinear(type):
             case _:
                 print("Please enter a valid response 1, 2 or 3.")
                 
-
+# All of the pontential matrices needed for the molecules that the user can specify
 def linmatrix(length):
     M = np.zeros((length, length))
     row = M.shape[0]
@@ -120,12 +124,14 @@ def napthalene():
         M[i, j] = M[j, i] = 1
     return M
 
+# Once the matrix is chosen the energies are calculated
 def get_evals(M):
     evals, evecs = np.linalg.eig(M)
     evals = np.sort(evals)
     evals_rounded = ['%.6f' % eval for eval in evals]
     return evals_rounded
 
+# Used to count the number of degenerate orbitals
 def degeneracies(evals):
     deg = {}
     for i in evals:
